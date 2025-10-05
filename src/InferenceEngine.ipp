@@ -3329,7 +3329,7 @@ void InferenceEngine<RealT>::ComputeViterbi()
             {
                 RealT *p1 = &(FM1v[offset[i]+i+1]);
                 RealT *p2 = &(FMv[offset[i+1]+j]);
-                for (register int k = i+1; k < j; k++)
+                for (auto int k = i+1; k < j; k++)
                 {
                     UPDATE_MAX(FM2v, FM2t, (*p1) + (*p2), k);
                     ++p1;
@@ -3339,9 +3339,9 @@ void InferenceEngine<RealT>::ComputeViterbi()
             
 #else
             
-            for (register size_t kp = 0; kp < candidates.size(); kp++)
+            for (auto size_t kp = 0; kp < candidates.size(); kp++)
             {
-                register const int k = candidates[kp];
+                auto const int k = candidates[kp];
                 UPDATE_MAX(FM2v, FM2t, FM1v[offset[i]+k] + FMv[offset[k]+j], k);
             }
             
@@ -4136,7 +4136,7 @@ void InferenceEngine<RealT>::ComputeInside()
             {
                 const RealT *p1 = &(FM1i[offset[i]+i+1]);
                 const RealT *p2 = &(FMi[offset[i+1]+j]);
-                for (register int k = i+1; k < j; k++)
+                for (auto int k = i+1; k < j; k++)
                 {
                     Fast_LogPlusEquals(FM2i, (*p1) + (*p2));
                     ++p1;
@@ -4782,7 +4782,7 @@ void InferenceEngine<RealT>::ComputeOutside()
                 RealT *p2i = &(FMi[offset[i+1]+j]);
                 RealT *p1o = &(FM1o[offset[i]+i+1]);
                 RealT *p2o = &(FMo[offset[i+1]+j]);
-                for (register int k = i+1; k < j; k++)
+                for (auto int k = i+1; k < j; k++)
                 {
                     Fast_LogPlusEquals(*p1o, FM2o + *p2i);
                     Fast_LogPlusEquals(*p2o, FM2o + *p1i);
@@ -4857,7 +4857,7 @@ std::vector<RealT> InferenceEngine<RealT>::ComputeFeatureCountExpectations()
             {
                 const RealT *p1 = &(FM1i[offset[i]+i+1]);
                 const RealT *p2 = &(FMi[offset[i+1]+j]);
-                for (register int k = i+1; k < j; k++)
+                for ( int k = i+1; k < j; k++)
                 {
                     Fast_LogPlusEquals(FM2i, (*p1) + (*p2));
                     ++p1;
@@ -5244,7 +5244,7 @@ std::vector<RealT> InferenceEngine<RealT>::ComputeFeatureCountExpectationsESS()
             {
                 const RealT *p1 = &(FM1i_ess[offset[i]+i+1]);
                 const RealT *p2 = &(FMi_ess[offset[i+1]+j]);
-                for (register int k = i+1; k < j; k++)
+                for (auto int k = i+1; k < j; k++)
                 {
                     Fast_LogPlusEquals(FM2i_ess, (*p1) + (*p2));
                     ++p1;
@@ -5627,7 +5627,7 @@ void InferenceEngine<RealT>::ComputePosterior()
             {
                 const RealT *p1 = &(FM1i[offset[i]+i+1]);
                 const RealT *p2 = &(FMi[offset[i+1]+j]);
-                for (register int k = i+1; k < j; k++)
+                for (auto int k = i+1; k < j; k++)
                 {
                     Fast_LogPlusEquals(FM2i, (*p1) + (*p2));
                     ++p1;
@@ -5960,7 +5960,7 @@ void InferenceEngine<RealT>::ComputePosteriorESS()
             {
                 const RealT *p1 = &(FM1i_ess[offset[i]+i+1]);
                 const RealT *p2 = &(FMi_ess[offset[i+1]+j]);
-                for (register int k = i+1; k < j; k++)
+                for (auto int k = i+1; k < j; k++)
                 {
                     Fast_LogPlusEquals(FM2i_ess, (*p1) + (*p2));
                     ++p1;
@@ -6328,7 +6328,7 @@ std::vector<int> InferenceEngine<RealT>::PredictPairingsPosterior(const RealT ga
                     
                     RealT *p1 = &(score[offset[i]+i+1]);
                     RealT *p2 = &(score[offset[i+1]+j]);
-                    for (register int k = i+1; k < j; k++)
+                    for (auto int k = i+1; k < j; k++)
                     {
                         UPDATE_MAX(this_score, this_traceback, (*p1) + (*p2), k+4);
                         ++p1;
@@ -6446,7 +6446,7 @@ std::vector<int> InferenceEngine<RealT>::PredictPairingsPosteriorCentroid(const 
 #else
                     RealT *p1 = &(score[offset[i]+i+1]);
                     RealT *p2 = &(score[offset[i+1]+j]);
-                    for (register int k = i+1; k < j; k++)
+                    for (auto int k = i+1; k < j; k++)
                     {
                         UPDATE_MAX(this_score, this_traceback, (*p1) + (*p2), k+4);
                         ++p1;
@@ -6565,7 +6565,7 @@ void InferenceEngine<RealT>::ComputeInsideESS()
             {
                 const RealT *p1 = &(FM1i_ess[offset[i]+i+1]);
                 const RealT *p2 = &(FMi_ess[offset[i+1]+j]);
-                for (register int k = i+1; k < j; k++)
+                for (auto int k = i+1; k < j; k++)
                 {
                     Fast_LogPlusEquals(FM2i_ess, (*p1) + (*p2));
                     ++p1;
@@ -7211,7 +7211,7 @@ void InferenceEngine<RealT>::ComputeOutsideESS()
                 RealT *p2i = &(FMi_ess[offset[i+1]+j]);
                 RealT *p1o = &(FM1o_ess[offset[i]+i+1]);
                 RealT *p2o = &(FMo_ess[offset[i+1]+j]);
-                for (register int k = i+1; k < j; k++)
+                for (auto int k = i+1; k < j; k++)
                 {
                     Fast_LogPlusEquals(*p1o, FM2o_ess + *p2i);
                     Fast_LogPlusEquals(*p2o, FM2o_ess + *p1i);
@@ -7286,7 +7286,7 @@ std::vector<RealT> InferenceEngine<RealT>::ComputeESS()
             {
                 const RealT *p1 = &(FM1i_ess[offset[i]+i+1]);
                 const RealT *p2 = &(FMi_ess[offset[i+1]+j]);
-                for (register int k = i+1; k < j; k++)
+                for (auto int k = i+1; k < j; k++)
                 {
                     Fast_LogPlusEquals(FM2i_ess, (*p1) + (*p2));
                     ++p1;
